@@ -1,5 +1,6 @@
 package com.example.test.Service;
 
+import com.example.test.DTOs.BookDTO;
 import com.example.test.Entity.Book;
 
 import java.util.List;
@@ -13,11 +14,11 @@ public interface BookService {
 
     void deleteBookById(Long id);
 
-    Book updateBook(Long id, Book book);
+    BookDTO updateBook(Long id, BookDTO bookDTO);
 
     Optional<Book> findBookById(Long id);
 
-    void saveBook(Book book);
+    void saveBook(BookDTO bookDTO);
 
     Optional<List<Book>> findBookByTitle(String title);
 

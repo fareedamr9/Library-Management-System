@@ -24,4 +24,7 @@ public class Author {
     private List<Book> books;
 
 
+    public Long getId() {
+        return authorId;
+    }
 }

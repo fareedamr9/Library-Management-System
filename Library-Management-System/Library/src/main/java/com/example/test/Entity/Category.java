@@ -24,4 +24,7 @@ public class Category {
     private List<Book> books;
 
 
+    public Long getId() {
+        return categoryId;
+    }
 }
