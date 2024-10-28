@@ -16,44 +16,18 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-
     @Autowired
     private BookService bookService;
 
-
-
     @GetMapping
-
     public List<Book> getBooks() {
         return bookService.getAllBooks();
-    }
-
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable("id") Long id) {
-        bookService.deleteBookById(id);
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable("id") Long id) {
        Optional<Book> book= bookService.findBookById(id);
         return ResponseEntity.ok(book.get());
-    }
-
-    @PostMapping("book/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable ("id") Long id,@RequestBody Book book) {
-        try {
-            Book updatedBook = bookService.updateBook(id, book);
-            return ResponseEntity.ok(updatedBook);
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    @PostMapping
-     public ResponseEntity<String> CreateBook(@RequestBody Book book) {
-        bookService.saveBook(book);
-        return ResponseEntity.ok().body(book.toString());
     }
 
     @GetMapping("/search/title")
